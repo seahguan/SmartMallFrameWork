@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<extentreports>
+  <configuration>
+    <!-- Report Theme-->
+    <!-- only have 2 option : Standard / Dark -->
+    <theme>Standard</theme>
+
+    <!-- Document Encoding-->
+    <!-- Defaults to UTF-8 -->
+    <encoding>UTF-8</encoding>
+
+    <!-- Protocol for Script and stylesheets-->
+    <!-- Default to https -->
+    <protocol>https</protocol>
+
+    <!-- Title of the Document -->
+    <documentTitle>PEFAMALL Automation Testing Reports</documentTitle>
+
+    <!-- Report Name - displayed at top-nav -->
+    <reportName>Automation Testing Report</reportName>
+
+    <!-- Report HeadLine - Display at top-nav, after reportHeadLine -->
+    <reportHeadline> -- QA - Staging Environment -- </reportHeadline>
+
+    <!-- Global date format override -->
+    <!-- defaults to HH:MM:SS -->
+    <timeFormat>HH:mm:ss</timeFormat>
+
+    <!-- location of charts in the test view -->
+    <!-- top, bottom -->
+    <testViewChartLocation>bottom</testViewChartLocation>
+
+    <!-- Custom JavaScript -->
+    <Scripts>
+      <![CDATA[
+        $(document).ready(function() {
+        });
+        ]]>
+    </Scripts>
+
+    <!-- Custom Styles -->
+    <styles>
+      <![CDATA[
+        
+        ]]>
+    </styles>
+  </configuration>
+</extentreports>

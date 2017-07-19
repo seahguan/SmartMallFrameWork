@@ -1,0 +1,68 @@
+using System;
+using System.Text;
+using System.Text.RegularExpressions;
+using System.Threading;
+using NUnit.Framework;
+using OpenQA.Selenium;
+using OpenQA.Selenium.Firefox;
+using Selenium;
+
+namespace SeleniumTests
+{
+	[TestFixture]
+	public class Nunit
+	{
+		private IWebDriver driver;
+		private ISelenium selenium;
+		private StringBuilder verificationErrors;
+		
+		[SetUp]
+		public void SetupTest()
+		{
+			verificationErrors = new StringBuilder();
+			driver = new FirefoxDriver();
+			selenium = new WebDriverBackedSelenium(driver,  "https://testwww.pefamall.my/");
+			selenium.Start();
+		}
+		
+		[TearDown]
+		public void TeardownTest()
+		{
+			try
+			{
+				driver.Close();
+			}
+			catch (Exception)
+			{
+				// Ignore errors if unable to close the browser
+			}
+			Assert.AreEqual(string.Empty, verificationErrors.ToString());
+		}
+		
+		[Test]
+		public void TheNunitTest()
+		{
+			selenium.Open("/");
+			selenium.Click("link=Register");
+			selenium.WaitForPageToLoad("30000");
+			selenium.Type("id=FirstName", "seahguan");
+			selenium.Type("id=LastName", "low");
+			selenium.Type("css=div.inputs > #Email", "sglow@git4u.com");
+			selenium.Type("id=Username", "sg123");
+			selenium.Click("id=check-availability-button");
+			selenium.Type("id=Username", "Lsg123");
+			selenium.Click("id=check-availability-button");
+			selenium.Select("id=CountryId", "label=Malaysia");
+			selenium.Type("id=Phone", "+60122962877");
+			selenium.Type("id=Password", "123abc");
+			selenium.Type("id=ConfirmPassword", "123abc");
+			selenium.Click("id=register-button");
+			selenium.WaitForPageToLoad("30000");
+			selenium.Type("css=div.inputs > #Email", "sglow@git2u.com");
+			selenium.Click("id=register-button");
+			selenium.WaitForPageToLoad("30000");
+			selenium.Click("css=input.button-1.register-continue-button");
+			selenium.WaitForPageToLoad("30000");
+		}
+	}
+}
